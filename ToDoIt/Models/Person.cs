@@ -38,13 +38,13 @@ namespace ToDoIt.Models
             get { return firstName; }
             set 
             {
-                if (value != null && value.Length > 0)
+                if (!string.IsNullOrEmpty(value) || value.Length > 0)
                 {
                     firstName = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Name cannot be empty.");
+                    throw new ArgumentNullException("Name cannot be empty.");
                 }
             }              
         }
@@ -55,7 +55,7 @@ namespace ToDoIt.Models
             get { return lastName; }
             set
             {
-                if (value != null && value.Length > 0)
+                if (!string.IsNullOrEmpty(value) || value.Length > 0)
                 {
                     firstName = value;
                 }
