@@ -13,16 +13,10 @@ namespace ToDoIt.Models
         private string lastName;
 
 
-        public Person(int id)
+        public Person(string firstName, string lastName, int id)
         {
-            this.id = id;
-        }
-
-
-        public Person(int id, string firstName, string lastName)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
+            FirstName = firstName;
+            LastName = lastName;
             this.id = id;
         }
 
@@ -38,13 +32,13 @@ namespace ToDoIt.Models
             get { return firstName; }
             set 
             {
-                if (!string.IsNullOrEmpty(value) || value.Length > 0)
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    firstName = value;
+                    throw new ArgumentException("First name cannot be empty.");
                 }
                 else
                 {
-                    throw new ArgumentNullException("Name cannot be empty.");
+                    firstName = value;
                 }
             }              
         }
@@ -55,13 +49,13 @@ namespace ToDoIt.Models
             get { return lastName; }
             set
             {
-                if (!string.IsNullOrEmpty(value) || value.Length > 0)
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    firstName = value;
+                    throw new ArgumentException("Last name cannot be empty.");
                 }
                 else
                 {
-                    throw new ArgumentException("Name cannot be empty.");
+                    lastName = value;
                 }
             }
         }

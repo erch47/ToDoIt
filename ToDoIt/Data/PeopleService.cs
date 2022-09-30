@@ -46,7 +46,7 @@ namespace ToDoIt.Data
         public Person CreatePerson(string firstName, string lastName)
         {
             Array.Resize(ref persons, persons.Length + 1);
-            persons[^1] = new Person(PersonSequencer.NextPersonId(), firstName, lastName);
+            persons[^1] = new Person(firstName, lastName, PersonSequencer.NextPersonId());
             return persons[^1];
         }
     }
