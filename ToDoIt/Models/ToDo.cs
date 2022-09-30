@@ -15,7 +15,7 @@ namespace ToDoIt.Models
         private Person assignee;
 
 
-        public ToDo(int id, string description)
+        public ToDo(string description, int id)
         {
             this.id = id;
             this.description = description;
