@@ -49,5 +49,33 @@ namespace ToDoIt.Data
             tasks[^1] = new ToDo(description, ToDoSequencer.NextTaskId());
             return tasks[^1];
         }
+
+
+        public ToDo[] FindByDoneStatus(bool doneStatus)
+        {
+            ToDo[] byDoneStatus = new ToDo[0];
+            foreach(ToDo item in tasks)
+            {
+                if (doneStatus == item.Done)
+                {
+                    byDoneStatus.Append(item);
+                }
+            }
+            return byDoneStatus;
+        }
+
+
+        public ToDo[] FindByAssignee(int personId)
+        {
+            ToDo[] byAssignee = new ToDo[0];
+            foreach (ToDo item in tasks)
+            {
+                if (personId == item.Assignee.PersonId)
+                {
+                    byAssignee.Append(item);
+                }
+            }
+            return byAssignee;
+        }
     }
 }
