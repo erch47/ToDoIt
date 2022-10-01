@@ -53,21 +53,21 @@ namespace ToDoIt.Data
 
         public ToDo[] FindByDoneStatus(bool doneStatus)
         {
-            ToDo[] byDoneStatus = new ToDo[0];
-            foreach(ToDo item in tasks)
+            List<ToDo> byDoneStatus = new List<ToDo>();
+            foreach (ToDo item in tasks)
             {
                 if (doneStatus == item.Done)
                 {
                     byDoneStatus.Append(item);
                 }
             }
-            return byDoneStatus;
+            return byDoneStatus.ToArray();
         }
 
 
         public ToDo[] FindByAssignee(int personId)
         {
-            ToDo[] byAssignee = new ToDo[0];
+            List <ToDo> byAssignee = new List <ToDo>();
             foreach (ToDo item in tasks)
             {
                 if (personId == item.Assignee.PersonId)
@@ -75,7 +75,21 @@ namespace ToDoIt.Data
                     byAssignee.Append(item);
                 }
             }
-            return byAssignee;
+            return byAssignee.ToArray();
+        }
+
+
+        public ToDo[] FindByAssignee(Person Assignee)
+        {
+            List<ToDo> byAssignee = new List<ToDo>();
+            foreach(ToDo item in tasks)
+            {
+                if (Assignee == item.Assignee)
+                {
+                    byAssignee.Append(item);
+                }
+            }
+            return byAssignee.ToArray();
         }
     }
 }
