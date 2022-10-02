@@ -49,5 +49,11 @@ namespace ToDoIt.Data
             persons[^1] = new Person(firstName, lastName, PersonSequencer.NextPersonId());
             return persons[^1];
         }
+
+
+        public void RemovePerson(Person personToRemove)
+        {
+            persons = persons.Where(person => person != personToRemove).ToArray();
+        }
     }
 }

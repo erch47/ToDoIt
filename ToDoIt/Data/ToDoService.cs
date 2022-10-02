@@ -91,5 +91,25 @@ namespace ToDoIt.Data
             }
             return byAssignee.ToArray();
         }
+
+
+        public ToDo[] FindUnassignedToDoItems() 
+        {
+            List<ToDo> unassignedToDoItems = new List<ToDo>();
+            foreach(ToDo item in tasks)
+            {
+                if (item.Assignee is null)
+                {
+                    unassignedToDoItems.Append(item);
+                }
+            }
+            return unassignedToDoItems.ToArray();
+        }
+
+
+        public void RemoveToDo(ToDo itemToRemove)
+        {
+            tasks = tasks.Where(item => item != itemToRemove).ToArray();
+        }
     }
 }
